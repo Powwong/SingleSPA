@@ -3,14 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>User Statistics</title>
+  <style>
+    #myProgress {
+      width: 100%;
+      background-color: #ddd;
+      margin-bottom: 15px;
+    }
+
+    #myBar {
+      width: 0%;
+      height: 30px;
+      background-color: #04AA6D;
+      text-align: center;
+      line-height: 30px;
+      color: white;
+    }
+  </style>
 </head>
 <body>
   <h1>User Statistics</h1>
-  <div id="statsContainer">
-    <p>Loading...</p>
+  <div>
+    <div id="myProgress">
+      <div id="myBar"></div>
+    </div>
+    <div id="statsContainer">
+      <p>Loading...</p>
+    </div>
   </div>
 
   <script>
+    // Function to update the progress bar based on completion percentage
+    function updateProgressBar(percentage) {
+      const progressBar = document.getElementById('myBar');
+      progressBar.style.width = percentage + '%';
+      progressBar.innerHTML = Math.round(percentage) + '%';
+    }
+
     // Simulated function to fetch user statistics
     function fetchUserStatistics(userId) {
       return new Promise((resolve, reject) => {
@@ -32,9 +60,13 @@
 
     // Usage example
     const userId = 1; // Replace with the user ID you want to retrieve stats for
+    const statsContainer = document.getElementById('statsContainer');
+
     fetchUserStatistics(userId)
       .then(data => {
-        const statsContainer = document.getElementById('statsContainer');
+        const completionPercentage = (data.question_done / data.question_max) * 100;
+        updateProgressBar(completionPercentage);
+
         statsContainer.innerHTML = `
           <p>User ID: ${data.user_id}</p>
           <p>Max Questions: ${data.question_max}</p>
