@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Statistics</title>
+</head>
+<body>
+  <h1>User Statistics</h1>
+  <div id="statsContainer">
+    <p>Loading...</p>
+  </div>
+
+  <script>
+    const userId = 1; // Replace with the user ID you want to display stats for
+
+    fetch(`/api/users/${userId}`)
+      .then(response => response.json())
+      .then(data => {
+        const statsContainer = document.getElementById('statsContainer');
+        statsContainer.innerHTML = `
+          <p>User ID: ${data.user_id}</p>
+          <p>Max Questions: ${data.question_max}</p>
+          <p>Questions Done: ${data.question_done}</p>
+        `;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        const statsContainer = document.getElementById('statsContainer');
+        statsContainer.innerHTML = `<p>Error fetching user statistics.</p>`;
+      });
+  </script>
+</body>
+</html>
