@@ -1,0 +1,121 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #f9f9f9;
+    padding: 20px;
+  }
+  
+  /* User profile */
+  .profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-right: 10px;
+  }
+  
+  .profile .name {
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  /* Progress bar */
+  .progress-container {
+    background: #e6e6e6;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .progress-bar {
+    height: 20px;
+    width: 80%; /* Adjust the width according to completion percentage */
+    background-color: #4CAF50;
+    position: relative;
+  }
+  
+  .progress-bar:after {
+    content: "80%";
+    position: absolute;
+    right: 10px;
+    color: white;
+  }
+  
+  /* Answer stats */
+  .answer-stats {
+    margin-bottom: 20px;
+  }
+  
+  .stat {
+    background: #e6e6e6;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  .stat .bar {
+    height: 20px;
+    background: #d1d1d1;
+  }
+  
+  .stat .bar span {
+    display: block;
+    background: #a0a0a0;
+    height: 100%;
+  }
+  
+  .stat .count {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Highlight user choice */
+  .user-choice {
+    position: absolute;
+    right: 0;
+    background-color: #ffd700;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .stat .label {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Example specific stats */
+  .stat-a .bar span { width: 30%; }
+  .stat-b .bar span { width: 60%; }
+  .stat-c .bar span { width: 20%; }
+  .stat-d .bar span { width: 80%; }
+  
+  /* Typography */
+  p {
+    color: #666;
+  }
+  

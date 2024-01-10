@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Statistics</title>
+  <link rel="stylesheet" href="User.css"> <!-- Ensure this file exists and contains additional styling -->
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .header-logo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 200px; /* Adjust size as needed */
+      height: 200px; /* Adjust size as needed */
+      border-radius: 50%; /* Makes the logo circular */
+
+    }
+    .header-logo img {
+      width: 100%;
+      height: auto;
+    }
+
+    #myProgress {
+      width: 50%;
+      background-color: #ff6f61
+      ;
+      margin: 20px auto 40px;
+    }
+
+    #myBar {
+      width: 1%;
+      height: 30px;
+      background-color: #4CAF50;
+      line-height: 30px;
+      color: white;
+    }
+
+    .answer-stats {
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+    }
+
+    .stat {
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .stat .bar-container {
+      background-color: #ddd; 
+      border-radius: 5px;
+      overflow: hidden;
+      height: 20px;
+    }
+
+    .rnum {
+      margin-left: 670px;
+      text-align: right;
+    }
+
+    .stat .bar {
+      height: 100%;
+      border-radius: 5px;
+    }
+
+    .stat-a .bar { background-color: #99ccff; width: 50%; }
+    .stat-b .bar { background-color: #99ccff; width: 10%; }
+    .stat-c .bar { background-color: #ffcc99; width: 30%; }
+    .stat-d .bar { background-color: #99ccff; width: 20%; }
+
+    .stat .label {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px;
+      align-items: center;
+    }
+
+    .logout-button {
+    }
+
+    body {
+  text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #fdf6e3; /* Warm light background */
+  color: #5c5753; /* Dark grey for text */
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #5c5753;
+  font-weight: 300;
+}
+
+#myProgress {
+  width: 60%;
+  background-color: #eee;
+  margin: 20px auto;
+  border-radius: 5px;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #ff6f61; /* Warm red */
+  line-height: 30px;
+  color: white;
+  text-align: left;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+.answer-stats {
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+}
+
+.stat {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stat .bar-container {
+  background-color: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 20px;
+  margin-top: 10px;
+}
+
+.rnum {
+  font-size: 0.9em;
+  color: #5c5753;
+}
+
+.stat .bar {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.stat-a .bar { background-color: #ffb347; width: 50%; } /* Warm orange */
+.stat-b .bar { background-color: #ffb347; width: 10%; } /* Light warm yellow */
+.stat-c .bar { background-color: #fdf498; width: 30%; } /* Warm red */
+.stat-d .bar { background-color: #ffb347; width: 20%; } /* Pale yellow */
+
+.stat .label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-button {
+  background-color: #ff6f61; /* Warm red */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.logout-button:hover {
+  background-color: #e55a4f; /* Darker shade of warm red */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #myProgress, .answer-stats {
+    width: 80%;
+  }
+}
+
+body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fdf6e3;
+      padding: 20px;
+      text-align: center;
+    }
+
+    select {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: white;
+    }
+
+    label {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <h1>User Statistics</h1>
+  <div id="myProgress">
+    <div id="myBar">0%</div>
+  </div>
+  <div id="statsContainer">
+    <p>Loading...</p>
+  </div>
+  <button class="logout-button" onclick="logout()">Logout</button>
+  <!-- Answer Statistics Section -->
+  <div class="header-logo">
+    <img src="C:\Users\powpa\OneDrive - James Cook University\CP3405\Final Project FRONT,BACKEND\ab.png" alt="Logo">
+  </div>
+  
+  <div>
+    <label for="question-select">Select Question:</label>
+    <select id="question-select">
+      <option value="">--Please choose a question--</option>
+      <option value="question1">Question 1</option>
+      <option value="question2">Question 2</option>
+      <option value="question3">Question 3</option>
+      <option value="question4">Question 4</option>
+      <option value="question5">Question 5</option>
+      <!-- Add more questions here -->
+    </select>
+  </div>
+
+  <div>
+    <label for="type-select">Type of Question:</label>
+    <select id="type-select">
+      <option value="">--Please choose a type--</option>
+      <option value="type1">MCQ</option>
+      <option value="type2">CHOICE ANSWER</option>
+      <option value="type3">ESSAY</option>
+      <!-- Add more types here -->
+    </select>
+
+    <div>
+      <button type="button" onclick="nextButtonClick()">Next</button>
+    </div>
+  
+  </div>
+  <div class="answer-stats">
+    <!-- Statistic for Answer A -->
+    <div class="stat stat-a">
+      <div class="label"><span>A</span> <span><div class="rnum">8</div><div></div></span></div>
+      <div class="bar-container">
+        <div class="bar"></div>
+      </div>
+    </div>
+    <!-- Statistic for Answer B -->
+    <div class="stat stat-b">
+      <div class="label"><span>B</span> <span><div class="rnum">2</div></span></div>
+      <div class="bar-container">
+        <div class="bar"></div>
+      </div>
+    </div>
+    <!-- Statistic for Answer C -->
+    <div class="stat stat-c">
+      <div class="label"><span>C</span> <span><div class="rnum">6</div></span></div>
+      <div class="bar-container">
+        <div class="bar"></div>
+      </div>
+    </div>
+    <!-- Statistic for Answer D -->
+    <div class="stat stat-d">
+      <div class="label"><span>D</span> <span><div class="rnum">2</div></span></div>
+      <div class="bar-container">
+        <div class="bar"></div>
+      </div>
+    </div>
+  </div>
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const userId = 1;
+      fetchUserStatistics(userId)
+        .then(data => {
+          const completionPercentage = (data.question_done / data.question_max) * 100;
+          move(completionPercentage); // Call move here to animate the progress bar
+          const statsContainer = document.getElementById('statsContainer');
+          statsContainer.innerHTML = `
+            <p>User ID: ${data.user_id}</p>
+            <p>Max Questions: ${data.question_max}</p>
+            <p>Questions Done: ${data.question_done}</p>
+          `;
+        })
+        .catch(error => {
+          console.error('Error fetching user statistics:', error.message);
+        });
+    });
+
+    function move(percentage) {
+      var elem = document.getElementById("myBar");
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= percentage) {
+          clearInterval(id);
+          elem.innerHTML = percentage.toFixed(0) + '%';
+        } else {
+          width++;
+          elem.style.width = width + '%';
+          elem.innerHTML = width.toFixed(0) + '%';
+        }
+      }
+    }
+
+    function moveMultipleBars() {
+
+  // loded data frm constant variable
+  // Define the target percentages for each bar
+  const targets = {
+    'stat-a': 40,
+    'stat-b': 20,  
+    'stat-c': 30,
+    'stat-d': 20,
+  };
+
+  // Iterate over each target and animate the corresponding bar
+  for (const [key, value] of Object.entries(targets)) {
+    animateBar(document.querySelector(`.${key} .bar`), value);
+  }
+}
+
+function animateBar(elem, target) {
+  var width = 1;
+  var id = setInterval(frame, 10);
+
+  function frame() {
+    if (width >= target) {
+      clearInterval(id);
+      elem.innerHTML = target + '%';
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      elem.innerHTML = width.toFixed(0) + '%';
+    }
+  }
+}
+
+// Call moveMultipleBars when DOM is fully loaded
+document.addEventListener("DOMContentLoaded", function() {
+  moveMultipleBars();
+});
+
+
+    function fetchUserStatistics(userId) {
+      return new Promise((resolve, reject) => {
+        const mockUserStatistics = {
+          user_id: 1,
+          question_max: 50,
+          question_done: 50,
+        };
+        setTimeout(() => {
+          if (userId === mockUserStatistics.user_id) {
+            resolve(mockUserStatistics);
+          } else {
+            reject(new Error('User statistics not found'));
+          }
+        }, 1000);
+      });
+    }
+
+    function logout() {
+      alert("You're logged out");
+    }
+
+ 
+    function nextButtonClick() {
+      // You can add your logic here for what happens when the "Next" button is clicked.
+      alert("Error Input *need immediate attention*!");
+    }
+  </script>
+  </script>
+
+</body>
+</html>
